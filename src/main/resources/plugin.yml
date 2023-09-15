@@ -3,4 +3,5 @@ version: '${version}'
 main: plugin.ssumple.Main
 api-version: '1.19'
 commands:
-  levelup:
+  setLevel:
+  allSetLevel:

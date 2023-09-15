@@ -11,40 +11,40 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerBedEnterEvent;A
+import org.bukkit.event.player.PlayerBedEnterEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import plugin.ssumple.LevelUpCommand;
 
 public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
         Bukkit.getPluginManager().registerEvents(this, this);
-        getCommand("levelup").setExecutor(new LevelUpCommand());
+        getCommand("setLevel").setExecutor(new SetLevelCommand());
+        getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
 
     /**
-     * ƒvƒŒƒCƒ„[‚ªƒXƒj[ƒN‚ğŠJn/I—¹‚·‚éÛ‚É‹N“®‚³‚ê‚éƒCƒxƒ“ƒgƒnƒ“ƒhƒ‰B
+     * ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒã‚¹ãƒ‹ãƒ¼ã‚¯ã‚’é–‹å§‹/çµ‚äº†ã™ã‚‹éš›ã«èµ·å‹•ã•ã‚Œã‚‹ã‚¤ãƒ™ãƒ³ãƒˆãƒãƒ³ãƒ‰ãƒ©ã€‚
      *
-     * @param e ƒCƒxƒ“ƒg
+     * @param e ã‚¤ãƒ™ãƒ³ãƒˆ
      */
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent e) {
-        // ƒCƒxƒ“ƒg”­¶‚ÌƒvƒŒƒCƒ„[‚âƒ[ƒ‹ƒh‚È‚Ç‚Ìî•ñ‚ğ•Ï”‚É‚ÂB
+        // ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿæ™‚ã®ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‚„ãƒ¯ãƒ¼ãƒ«ãƒ‰ãªã©ã®æƒ…å ±ã‚’å¤‰æ•°ã«æŒã¤ã€‚
         Player player = e.getPlayer();
         World world = player.getWorld();
 
-        // ‰Ô‰ÎƒIƒuƒWƒFƒNƒg‚ğƒvƒŒƒCƒ„[‚ÌƒƒP[ƒVƒ‡ƒ“’n“_‚É‘Î‚µ‚ÄoŒ»‚³‚¹‚éB
+        // èŠ±ç«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®ãƒ­ã‚±ãƒ¼ã‚·ãƒ§ãƒ³åœ°ç‚¹ã«å¯¾ã—ã¦å‡ºç¾ã•ã›ã‚‹ã€‚
         Firework firework = world.spawn(player.getLocation(), Firework.class);
 
-        // ‰Ô‰ÎƒIƒuƒWƒFƒNƒg‚ª‚Âƒƒ^î•ñ‚ğæ“¾B
+        // èŠ±ç«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒæŒã¤ãƒ¡ã‚¿æƒ…å ±ã‚’å–å¾—ã€‚
         FireworkMeta fireworkMeta = firework.getFireworkMeta();
 
-        // ƒƒ^î•ñ‚É‘Î‚µ‚Äİ’è‚ğ’Ç‰Á‚µ‚½‚èA’l‚Ìã‘‚«‚ğs‚¤B
-        // ¡‰ñ‚ÍÂF‚Å¯Œ^‚Ì‰Ô‰Î‚ğ‘Å‚¿ã‚°‚éB
+        // ãƒ¡ã‚¿æƒ…å ±ã«å¯¾ã—ã¦è¨­å®šã‚’è¿½åŠ ã—ãŸã‚Šã€å€¤ã®ä¸Šæ›¸ãã‚’è¡Œã†ã€‚
+        // ä»Šå›ã¯é’è‰²ã§æ˜Ÿå‹ã®èŠ±ç«ã‚’æ‰“ã¡ä¸Šã’ã‚‹ã€‚
         fireworkMeta.addEffect(
             FireworkEffect.builder()
                 .withColor(Color.BLUE)
@@ -53,10 +53,11 @@ public final class Main extends JavaPlugin implements Listener {
                 .build());
         fireworkMeta.setPower(0);
 
-        // ’Ç‰Á‚µ‚½î•ñ‚ÅÄİ’è‚·‚éB
+        // è¿½åŠ ã—ãŸæƒ…å ±ã§å†è¨­å®šã™ã‚‹ã€‚
         firework.setFireworkMeta(fireworkMeta);
     }
-}
+
+
 
     @EventHandler
     public void onPlayerBedEnter(PlayerBedEnterEvent e) {
