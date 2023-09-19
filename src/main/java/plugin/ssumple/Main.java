@@ -21,8 +21,19 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
+        saveDefaultConfig();
+//        手順１,その後resources右→作成ファイル→ファイルを生成config.yml（手順２）
+//        saveDefaultconfigをするとファイルが読み込みできる場所へ行く
+
+//        Main読み込まれたときに設定（config）を生成する。→主体はここメイン。
+//        getConfig().getString("Message");
+//            文字列取得できる。※config.ymlの取得できません。を
+//        今回使いたいのは違うクラスのため、ここではやらない（手順４の時
+
+
         Bukkit.getPluginManager().registerEvents(this, this);
-        getCommand("setLevel").setExecutor(new SetLevelCommand());
+        getCommand("setLevel").setExecutor(new SetLevelCommand(this));
+//       手順５ 引数自分自身のためthis→setle…のエラーが消える
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
 
