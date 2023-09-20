@@ -19,6 +19,16 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
+//手順1:minecraftのseverstartに変更を（メモを使って）
+//手順２:inntelijにて実行→デバッグ
+  //→実行構成の編集
+  //左のプラスボタンの追加→リモートJVMデバッグ
+  //    →名称(spigotdebugと入力（なんでもOK)）
+  //適用→デバッグ
+    
+
+
+
 
     @Override
     public void onEnable() {
@@ -68,17 +78,6 @@ public final class Main extends JavaPlugin implements Listener {
 
         }
         count++;
-        //        System.out.println("今のカウント値"+count);
-//        外に出して確認する方法の１つ。
-//        system.outにしているからコンソール（ターミナル）の方にでる
-
-//        でも動作確認としてほしい。1回出たらOK
-//        動いていないときエラーとしてでない。
-//        エラー出ないけどおかしい動き。プログラミングよくある。
-//        →それを解決するのが一番難しい。早く解決するのが重要
-//        systemoutでもいいけど、ファイルなど外に出力して確認する行為をデバッグ。
-//        現場でのデバッグ＝プログラミングとめて動作確認
-//        systemoutあまりつかわない。
 
 
     }
