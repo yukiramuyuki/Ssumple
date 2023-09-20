@@ -1,6 +1,7 @@
 package plugin.ssumple;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -22,18 +23,8 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
-//        手順１,その後resources右→作成ファイル→ファイルを生成config.yml（手順２）
-//        saveDefaultconfigをするとファイルが読み込みできる場所へ行く
-
-//        Main読み込まれたときに設定（config）を生成する。→主体はここメイン。
-//        getConfig().getString("Message");
-//            文字列取得できる。※config.ymlの取得できません。を
-//        今回使いたいのは違うクラスのため、ここではやらない（手順４の時
-
-
         Bukkit.getPluginManager().registerEvents(this, this);
         getCommand("setLevel").setExecutor(new SetLevelCommand(this));
-//       手順５ 引数自分自身のためthis→setle…のエラーが消える
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
 
@@ -42,31 +33,46 @@ public final class Main extends JavaPlugin implements Listener {
      *
      * @param e イベント
      */
+    private int count;
     @EventHandler
     public void onPlayerToggleSneak(PlayerToggleSneakEvent e) {
         // イベント発生時のプレイヤーやワールドなどの情報を変数に持つ。
         Player player = e.getPlayer();
         World world = player.getWorld();
 
-        // 花火オブジェクトをプレイヤーのロケーション地点に対して出現させる。
-        Firework firework = world.spawn(player.getLocation(), Firework.class);
+        List<Color> colorList = List.of(Color.RED, Color.BLUE, Color.WHITE, Color.PURPLE,
+            Color.WHITE);
 
-        // 花火オブジェクトが持つメタ情報を取得。
-        FireworkMeta fireworkMeta = firework.getFireworkMeta();
+        if (count % 2 == 0) {
+            for (Color color : colorList) {
 
-        // メタ情報に対して設定を追加したり、値の上書きを行う。
-        // 今回は青色で星型の花火を打ち上げる。
-        fireworkMeta.addEffect(
-            FireworkEffect.builder()
-                .withColor(Color.BLUE)
-                .with(Type.STAR)
-                .withFlicker()
-                .build());
-        fireworkMeta.setPower(0);
+                // 花火オブジェクトをプレイヤーのロケーション地点に対して出現させる。
+                Firework firework = world.spawn(player.getLocation(), Firework.class);
 
-        // 追加した情報で再設定する。
-        firework.setFireworkMeta(fireworkMeta);
+                // 花火オブジェクトが持つメタ情報を取得。
+                FireworkMeta fireworkMeta = firework.getFireworkMeta();
+
+                // メタ情報に対して設定を追加したり、値の上書きを行う。
+                // 今回は青色で星型の花火を打ち上げる。
+                fireworkMeta.addEffect(
+                    FireworkEffect.builder()
+                        .withColor(color)
+                        .with(Type.STAR)
+                        .withFlicker()
+                        .build());
+                fireworkMeta.setPower(1);
+
+                // 追加した情報で再設定する。
+                firework.setFireworkMeta(fireworkMeta);
+            }
+
+        }
+        count++;
+
+
     }
+
+
 
 
 

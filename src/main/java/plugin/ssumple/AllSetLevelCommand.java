@@ -16,7 +16,7 @@ public class AllSetLevelCommand implements CommandExecutor {
        player.setLevel(Integer.parseInt(args[0]));
        System.out.println("プレイヤーのレベルが"+args[0]+"に設定されました。");
      }
-//system.out.printlnにする理由はコンソール側にコメントをだすため。パワーシェルに
+
    }
     return false;
   }
