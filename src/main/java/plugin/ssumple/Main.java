@@ -19,13 +19,8 @@ import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
-//手順1:minecraftのseverstartに変更を（メモを使って）
-//手順２:inntelijにて実行→デバッグ
-  //→実行構成の編集
-  //左のプラスボタンの追加→リモートJVMデバッグ
-  //    →名称(spigotdebugと入力（なんでもOK)）
-  //適用→デバッグ
-    
+
+
 
 
 
@@ -33,10 +28,12 @@ public final class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
         Bukkit.getPluginManager().registerEvents(this, this);
         getCommand("setLevel").setExecutor(new SetLevelCommand(this));
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
+//    できる場所とできない場所がある？
 
     /**
      * プレイヤーがスニークを開始/終了する際に起動されるイベントハンドラ。
