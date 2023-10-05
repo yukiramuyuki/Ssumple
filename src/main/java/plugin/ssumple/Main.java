@@ -40,16 +40,14 @@ public final class Main extends JavaPlugin implements Listener {
     public void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
         World world = player.getWorld();
-        Location pyaerLocation = player.getLocation();
-        Chicken chicken = world.spawn(new Location(world, 0 0 0), Chicken.class);
-//spawnの便利なところエンティティタイプ指定しない代わりに　 Chichen.Class
-//        クラス指定するとクラスのエンティティが返ってくる。キレイ。チキンとして扱いやすい。
+        Location playaerLocation = player.getLocation();
+        world.spawn(new Location(world, playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()), Chicken.class);
+//        Chicken chicken = world.・・・
+//       → こんかいはチキンに対して何もしない。ワールドspawnに対してなので、Chicken chicken（変数）を取らなくてもOK
+//よくわからないところにでないように、座標を(playerLocation.getX playerLocation.geY yZ
+//        数字なので+で入れたらOK.自分の場所から+数字のところに。
 
-//        なぜspawnEntityにして、エンティティタイプ指定するのか？
-//        EntityType.valueOf("")でchickenにすると最初チキンにできる。名前を指定してつくれる
-//        作りたいエンティティがその都度かわる。設定された内容によって変わるときはこちら。
 
-//        キレイに分かりやすいのはクラスの方。今回はこっちで。
 
 
     }
