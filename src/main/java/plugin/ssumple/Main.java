@@ -20,13 +20,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
 
+
+
+
+
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
+
         Bukkit.getPluginManager().registerEvents(this, this);
         getCommand("setLevel").setExecutor(new SetLevelCommand(this));
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
+//    できる場所とできない場所がある
 
     /**
      * プレイヤーがスニークを開始/終了する際に起動されるイベントハンドラ。
