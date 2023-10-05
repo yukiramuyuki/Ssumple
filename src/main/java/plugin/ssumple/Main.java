@@ -7,82 +7,21 @@ import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Type;
+import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerBedEnterEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
-
-    /**
-     * DAY7javadoc
-     *
-     * javadoc自分でもできる
-     *
-     * メソッド作ったあと
-     *
-     * "/**
-     *
-     * DAY8フレームワーク
-     *
-     * フレームワーク
-     *
-     * ウェブアプリ作成時のフレームワークと今との違い
-     *
-     * javaウエブアプリ作るときによく使われるフレームワーク
-     * spring　makes
-     *
-     *
-     * 自作のはやめたほうが・・・。
-     * 自作の場合（オレオレフレームワークと呼ばれることある）
-     * 　自分の技術をあげていくべき・価値を
-     * 　自社での価値あったとしても、社会に出た時つくりが全く違うことも
-     * 　最悪全く役がたたないばあいも。中身よりも独自につくっていくことが問題かも・・・。
-     * 　昔貧弱だったから、自作がいくつかある・・・。
-     * 　今残っているフレームワークはそれの残ったものともいえるが・・・。
-     * 　作るメリットが今ない。
-     * 　独自性がある場合は　
-     *
-     *
-     * フレームワークとは
-     * 骨組み
-     * 何のための骨組みなのか？
-     * 　ゲーム、アプリ・・・
-     *
-     * やりたいことできないのがいちばんいや。
-     * 骨ぐみなので、全てかえないといけない。
-     * 　なんでもできるものが無難。
-     * springはそれができる。　痒い所に手が届く
-     *
-     * spigotプラグインのための骨組み
-     * springウエブアプリのための骨組み
-     * やることは同じ規模が違うだけで
-     *
-     *
-     * フレームワーク選び方
-     *
-     * 好きなものでいい。
-     * 悩んだときは人気か
-     * 情報量が多い
-     *
-     * 公式サイト
-     * 解説を見てみる
-     *
-     * springboot今はやっている　お手軽。すぐできる
-     * springフレームワーク一般　最初はちょっと難しい
-     * bootでもspringの機能使える。
-     *
-     * gettingstarted　チュートリアル
-     */
-
-
-
 
     @Override
     public void onEnable() {
@@ -92,6 +31,37 @@ public final class Main extends JavaPlugin implements Listener {
         getCommand("setLevel").setExecutor(new SetLevelCommand(this));
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
     }
+
+
+//    自ら動くもの
+//　プレイヤー、敵、矢・・・
+//
+//    playerjoin使いにくい
+//    発生しにくい。入るたびのため
+//
+//    ジャンプない　イベント
+//        Playertoggleのとき
+//    マイクラジャンプと空を飛ぶの判断ができない
+//    空を飛ぶのはある。
+
+    //    入った時
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e){
+        Player player = e.getPlayer();
+        World world = player.getWorld();
+        Location pyaerLocation = player.getLocation();
+//        今いる位置を取得
+        world.spawnEntity(new Location(world,0 0 0 ), EntityType.CHICKEN)
+//            二つの引数をもつロケーション・エンティティタイプ
+//        座標離れている場合newを入れる。引数にworldの情報をロケーションはx,y,z軸指定必要
+//        →数字入れてスペース
+//        エンティティタイプはクラスがある.でいくつか候補がある敵、矢・・・
+
+
+//            花火のところで"getLocation"使っている
+    }
+
+
 
 
     /**
