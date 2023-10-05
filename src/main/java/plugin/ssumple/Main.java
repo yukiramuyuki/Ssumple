@@ -9,6 +9,8 @@ import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Chicken;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
@@ -34,19 +36,22 @@ public final class Main extends JavaPlugin implements Listener {
 
 
 
-    //    入った時
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
         Player player = e.getPlayer();
         World world = player.getWorld();
         Location pyaerLocation = player.getLocation();
-//        今いる位置を取得
-        world.spawnEntity(new Location(world,0 0 0 ), EntityType.CHICKEN)
-//        花火のときロケーションを指定するか、クラスを指定するかの違い
-//        "world.spawnEntity"を右クリックリファクタリング変数の導入entityとれる
-//        entity広い。チキンでとれるけど、エラーになる。引数のチキンをプレイヤーに変えてもできる。でもエラーになる。
-//       キャストはできる限り避ける
-        
+        Chicken chicken = world.spawn(new Location(world, 0 0 0), Chicken.class);
+//spawnの便利なところエンティティタイプ指定しない代わりに　 Chichen.Class
+//        クラス指定するとクラスのエンティティが返ってくる。キレイ。チキンとして扱いやすい。
+
+//        なぜspawnEntityにして、エンティティタイプ指定するのか？
+//        EntityType.valueOf("")でchickenにすると最初チキンにできる。名前を指定してつくれる
+//        作りたいエンティティがその都度かわる。設定された内容によって変わるときはこちら。
+
+//        キレイに分かりやすいのはクラスの方。今回はこっちで。
+
+
     }
 
 
