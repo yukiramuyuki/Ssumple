@@ -33,16 +33,6 @@ public final class Main extends JavaPlugin implements Listener {
     }
 
 
-//    自ら動くもの
-//　プレイヤー、敵、矢・・・
-//
-//    playerjoin使いにくい
-//    発生しにくい。入るたびのため
-//
-//    ジャンプない　イベント
-//        Playertoggleのとき
-//    マイクラジャンプと空を飛ぶの判断ができない
-//    空を飛ぶのはある。
 
     //    入った時
     @EventHandler
@@ -52,13 +42,11 @@ public final class Main extends JavaPlugin implements Listener {
         Location pyaerLocation = player.getLocation();
 //        今いる位置を取得
         world.spawnEntity(new Location(world,0 0 0 ), EntityType.CHICKEN)
-//            二つの引数をもつロケーション・エンティティタイプ
-//        座標離れている場合newを入れる。引数にworldの情報をロケーションはx,y,z軸指定必要
-//        →数字入れてスペース
-//        エンティティタイプはクラスがある.でいくつか候補がある敵、矢・・・
-
-
-//            花火のところで"getLocation"使っている
+//        花火のときロケーションを指定するか、クラスを指定するかの違い
+//        "world.spawnEntity"を右クリックリファクタリング変数の導入entityとれる
+//        entity広い。チキンでとれるけど、エラーになる。引数のチキンをプレイヤーに変えてもできる。でもエラーになる。
+//       キャストはできる限り避ける
+        
     }
 
 
