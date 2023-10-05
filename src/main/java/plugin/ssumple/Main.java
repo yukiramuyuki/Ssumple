@@ -42,10 +42,8 @@ public final class Main extends JavaPlugin implements Listener {
         World world = player.getWorld();
         Location playaerLocation = player.getLocation();
         world.spawn(new Location(world, playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()), Chicken.class);
-//        Chicken chicken = world.・・・
-//       → こんかいはチキンに対して何もしない。ワールドspawnに対してなので、Chicken chicken（変数）を取らなくてもOK
-//よくわからないところにでないように、座標を(playerLocation.getX playerLocation.geY yZ
-//        数字なので+で入れたらOK.自分の場所から+数字のところに。
+//コードを書く時のクセとして、実装する前に確認する
+//        今回はチキンが出ないことを確認
 
 
 
