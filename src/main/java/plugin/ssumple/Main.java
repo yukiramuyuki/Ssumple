@@ -49,10 +49,7 @@ public final class Main extends JavaPlugin implements Listener {
             new Location(world,
                 playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ())).setType(
             Material.DARK_OAK_WOOD);
-//さらにsetTypeができる。今回はマテリアルを指定。ブロックを設計できる。
-//        プレイヤーから+３のところ床はあるけど、なにもない。空気
-//        空気に対して上書きをする。"DARKOAKWOOD　木
-//        情報をとってきた→それを上書き。
+
 
 
     }
