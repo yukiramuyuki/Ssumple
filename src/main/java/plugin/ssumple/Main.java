@@ -25,9 +25,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
 
-    //プラグインブロックで、秘密の階段をしゅつげんさせたり、ボタン押すと・・・とかできる。
-//        単体よりも演出の一部。その場が溶岩になど
-//    やり方は前回のエンティティと似たようなもの。
+
 
     @Override
     public void onEnable() {
@@ -46,10 +44,13 @@ public final class Main extends JavaPlugin implements Listener {
         Player player = e.getPlayer();
         World world = player.getWorld();
         Location playaerLocation = player.getLocation();
-        world.spawn(new Location(world, playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()), Chicken.class);
-
-
-
+        world.getBlockAt(
+            new Location(world,
+                playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()));
+//player.world.locationplayerは同じ
+//       worldで getblockをとってくる。
+//        →特定のロケーションにあるブロックの情報をとってくる。(チキンをけす）
+//        とっただけで何も起きない
 
 
     }
