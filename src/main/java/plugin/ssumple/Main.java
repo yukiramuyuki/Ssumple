@@ -8,6 +8,7 @@ import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Type;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
@@ -46,11 +47,12 @@ public final class Main extends JavaPlugin implements Listener {
         Location playaerLocation = player.getLocation();
         world.getBlockAt(
             new Location(world,
-                playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()));
-//player.world.locationplayerは同じ
-//       worldで getblockをとってくる。
-//        →特定のロケーションにあるブロックの情報をとってくる。(チキンをけす）
-//        とっただけで何も起きない
+                playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ())).setType(
+            Material.DARK_OAK_WOOD);
+//さらにsetTypeができる。今回はマテリアルを指定。ブロックを設計できる。
+//        プレイヤーから+３のところ床はあるけど、なにもない。空気
+//        空気に対して上書きをする。"DARKOAKWOOD　木
+//        情報をとってきた→それを上書き。
 
 
     }
