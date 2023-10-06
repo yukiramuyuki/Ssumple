@@ -25,6 +25,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Main extends JavaPlugin implements Listener {
 
+    //プラグインブロックで、秘密の階段をしゅつげんさせたり、ボタン押すと・・・とかできる。
+//        単体よりも演出の一部。その場が溶岩になど
+//    やり方は前回のエンティティと似たようなもの。
+
     @Override
     public void onEnable() {
         saveDefaultConfig();
@@ -32,7 +36,7 @@ public final class Main extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(this, this);
         getCommand("setLevel").setExecutor(new SetLevelCommand(this));
         getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
-        
+
     }
 
 
