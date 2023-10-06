@@ -42,8 +42,7 @@ public final class Main extends JavaPlugin implements Listener {
         World world = player.getWorld();
         Location playaerLocation = player.getLocation();
         world.spawn(new Location(world, playaerLocation.getX()+3,playaerLocation.getY(),playaerLocation.getZ()), Chicken.class);
-//コードを書く時のクセとして、実装する前に確認する
-//        今回はチキンが出ないことを確認
+
 
 
 
