@@ -93,6 +93,9 @@ public final class Main extends JavaPlugin implements Listener {
     count++;
 
 //まーじまーじ
+
+
+//    まーじ
   }
 
 
