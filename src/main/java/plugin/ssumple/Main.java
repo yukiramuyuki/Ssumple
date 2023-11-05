@@ -36,7 +36,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
   }
-
+//まままーじじじー
 
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent e) {
@@ -92,10 +92,7 @@ public final class Main extends JavaPlugin implements Listener {
     }
     count++;
 
-//まーじまーじ
 
-
-//    まーじｆｄｆ
   }
 
 
