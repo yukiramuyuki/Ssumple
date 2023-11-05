@@ -36,7 +36,7 @@ public final class Main extends JavaPlugin implements Listener {
 
 
   }
-//まじまじ
+//マージ
 
   @EventHandler
   public void onPlayerJoin(PlayerJoinEvent e) {
