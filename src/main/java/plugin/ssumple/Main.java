@@ -34,7 +34,7 @@ public final class Main extends JavaPlugin implements Listener {
     getCommand("setLevel").setExecutor(new SetLevelCommand(this));
     getCommand("allSetLevel").setExecutor(new AllSetLevelCommand());
 
-
+//まーじ
   }
 
   @EventHandler
